@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Authors>Sachintha Silva</Authors>
+    <Company>Sachintha-Home</Company>
+    <Description>Vector algebraic calculator library with common vector operations</Description>
+    <Copyright>Sachintha-PC</Copyright>
+  </PropertyGroup>
+
+</Project>

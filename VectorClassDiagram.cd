@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="VectorLibrary.Vector">
+    <Position X="4.5" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CEAgQAAAAAEAAAUAAAAEAAgAAQAAAAAAAAQAAABEAAA=</HashCode>
+      <FileName>Vector.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.513" />
+  </Class>
+  <Class Name="VectorLibrary.Vector3D">
+    <Position X="1.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAgAAAAAAQAAAAAAAAEAAAAAQAAAAAAAAQAAOAFCAA=</HashCode>
+      <FileName>Vector3D.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VectorLibrary.VectorND">
+    <Position X="7.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CAAgAAAAAAQAAAAAAAAEAAAAAQAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>VectorND.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VectorLibrary.MessageTemplates.Message">
+    <Position X="6.75" Y="1.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAABAAAABgAAAAAAAAAAA=</HashCode>
+      <FileName>MessageTemplates\Message.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VectorLibrary.Exceptions.InvalidVectorOperationException">
+    <Position X="1.5" Y="9.75" Width="3.75" />
+    <InheritanceLine Type="System.Exception" FixedToPoint="true">
+      <Path>
+        <Point X="5.125" Y="8.812" />
+        <Point X="5.125" Y="9.375" />
+        <Point X="4.246" Y="9.375" />
+        <Point X="4.246" Y="9.75" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\InvalidVectorOperationException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Exception" Collapsed="true">
+    <Position X="4" Y="8.25" Width="2.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VectorLibrary.Exceptions.VectorNotInitializedException">
+    <Position X="6.75" Y="8" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\VectorNotInitializedException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VectorLibrary.Exceptions.VectorSpaceNotMatchException">
+    <Position X="6" Y="9.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Exceptions\VectorSpaceNotMatchException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="VectorLibrary.IVector">
+    <Position X="4.25" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAUAAAAEAAAAAAAAAAAAAAAAAABEAAA=</HashCode>
+      <FileName>IVector.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VectorLibrary.VectorOperations.ICommonVectorOperations">
+    <Position X="1.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CAAgQAAAAAEAAAAAAAAAAAgAAQAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>VectorOperations\ICommonVectorOperations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="VectorLibrary.VectorOperations.I3DVectorOperations">
+    <Position X="1.5" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>VectorOperations\I3DVectorOperations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="VectorLibrary.VectorEnums.AngleUnit">
+    <Position X="7.5" Y="3.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VectorEnums\Angle.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
