@@ -4,6 +4,75 @@
         <name>VectorLibrary</name>
     </assembly>
     <members>
+        <member name="T:VectorLibrary.Exceptions.InvalidVectorOperationException">
+            <summary>
+            Exception when the vector is unable to perform the iven operation.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.InvalidVectorOperationException.#ctor">
+            <summary>
+            Initialize an instance of InvalidVectorOperationException.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.InvalidVectorOperationException.#ctor(System.String)">
+            <summary>
+            Initialize an instance of InvalidVectorOperationException with specified message.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.InvalidVectorOperationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initialize an instance of InvalidVectorOperationException with specified message and exception that cause this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+            <param name="inner">The exception that is the cause of the current exception, or a null reference.</param>
+        </member>
+        <member name="T:VectorLibrary.Exceptions.VectorNotInitializedException">
+            <summary>
+            Exception when the vector is not initialized.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.VectorNotInitializedException.#ctor">
+            <summary>
+            Initialize an instance of VectorNotInitializedException.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.VectorNotInitializedException.#ctor(System.String)">
+            <summary>
+            Initialize an instance of VectorNotInitializedException with specified message.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.VectorNotInitializedException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initialize an instance of VectorNotInitializedException with specified message and exception that cause this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+            <param name="inner">The exception that is the cause of the current exception, or a null reference.</param>
+        </member>
+        <member name="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">
+            <summary>
+            Exception when the vector operates with non-matching dimensional vector.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.VectorSpaceNotMatchException.#ctor">
+            <summary>
+            Initialize an instance of VectorSpaceNotMatchException.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.VectorSpaceNotMatchException.#ctor(System.String)">
+            <summary>
+            Initialize an instance of VectorSpaceNotMatchException with specified message.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.VectorSpaceNotMatchException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initialize an instance of VectorSpaceNotMatchException with specified message and exception that cause this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+            <param name="inner">The exception that is the cause of the current exception, or a null reference.</param>
+        </member>
         <member name="T:VectorLibrary.IVector">
             <summary>
             Define common properties and functions on vectors in any dimension.
