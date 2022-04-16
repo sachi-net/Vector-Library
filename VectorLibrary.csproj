@@ -3,9 +3,17 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Authors>Sachintha Silva</Authors>
-    <Company>Sachintha-Home</Company>
+    <Company>Sachi-Home</Company>
     <Description>Vector algebraic calculator library with common vector operations</Description>
     <Copyright>Sachintha-PC</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>VectorLibrary.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>VectorLibrary.xml</DocumentationFile>
   </PropertyGroup>
 
 </Project>

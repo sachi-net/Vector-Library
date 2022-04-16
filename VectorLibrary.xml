@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VectorLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:VectorLibrary.IVector">
+            <summary>
+            Define common properties and functions on vectors in any dimension.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.IVector.GetMagnitude">
+            <summary>
+            Calculate the magnitude of this vector.
+            </summary>
+            <returns>Magnitude of the vector as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.IVector.GetDimension">
+            <summary>
+            Calculate the vector dimension.
+            </summary>
+            <returns>Dimension of the vector as integer.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.IVector.GetUnitVector">
+            <summary>
+            Calculate the unit vector along this vector.
+            </summary>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <returns>Unit vector as IVector</returns>
+        </member>
+        <member name="M:VectorLibrary.IVector.Print(System.Int32)">
+            <summary>
+            Format this vector as row matrix notation.
+            </summary>
+            <param name="precision">Decimal precision of the vector components.</param>
+            <returns>Row matrix form of the vector as string.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.IVector.ToArray">
+            <summary>
+            Convert this vector to an array.
+            </summary>
+            <returns>Vector components as decimal array.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="T:VectorLibrary.Vector">
+            <summary>
+            Defines vector with properties and common vector operations.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Vector.ToArray">
+            <summary>
+            Convert this vector to an array.
+            </summary>
+            <returns>Vector components as decimal array.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.GetMagnitude">
+            <summary>
+            Calculate the magnitude of this vector.
+            </summary>
+            <returns>Magnitude of the vector as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.GetDimension">
+            <summary>
+            Calculate the vector dimension.
+            </summary>
+            <returns>Dimension of the vector as integer.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.GetUnitVector">
+            <summary>
+            Calculate the unit vector along this vector.
+            </summary>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <returns>Unit vector as IVector</returns>
+        </member>
+        <member name="M:VectorLibrary.Vector.Print(System.Int32)">
+            <summary>
+            Format this vector as row matrix notation.
+            </summary>
+            <param name="precision">Decimal precision of the vector components.</param>
+            <returns>Row matrix form of the vector as string.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.AddTo(VectorLibrary.IVector)">
+            <summary>
+            Addition of this vector with provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be pereformed the addition.</param>
+            <returns>Addition of the vectors as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.SubtractFrom(VectorLibrary.IVector)">
+            <summary>
+            Subtraction of this vector from provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be substracted from.</param>
+            <returns>Substraction of the vectors as IVector</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.DotProduct(VectorLibrary.IVector)">
+            <summary>
+            Perform the scalar product with this vector and provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be performed the scalar product.</param>
+            <returns>Scalar product of the vectors as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.MultiplyByScalar(System.Decimal)">
+            <summary>
+            Perform scalar multiplication with this vector.
+            </summary>
+            <param name="scalar">The scalar to be performed the multiplication.</param>
+            <returns>Scaled vector as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.AngleWith(VectorLibrary.IVector,VectorLibrary.VectorEnums.AngleUnit)">
+            <summary>
+            Compute the angle between this vector and provided IVector.
+            </summary>
+            <param name="vector">The vector to be calculated the angle with.</param>
+            <param name="angleUnit">Unit of the angle [Radian/Degree].</param>
+            <returns>The angle between the vectors as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.ScalarProjectionOn(VectorLibrary.IVector)">
+            <summary>
+            Scalar projection of this vector on to provided IVector.
+            </summary>
+            <param name="vector">The vector to be projected on to.</param>
+            <returns>Scalar projection of the vector as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.VectorProjectionOn(VectorLibrary.IVector)">
+            <summary>
+            Vector projection of this vector on to provided IVector.
+            </summary>
+            <param name="vector">The vector to be projected on to.</param>
+            <returns>Vector projection of the vector as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="T:VectorLibrary.Vector3D">
+            <summary>
+            Defines 3-dimensional vector with properties and all related vector operations.
+            </summary>
+        </member>
+        <member name="P:VectorLibrary.Vector3D.I">
+            <summary>
+            Get the i component of the vector.
+            </summary>
+        </member>
+        <member name="P:VectorLibrary.Vector3D.J">
+            <summary>
+            Get the j component of the vector.
+            </summary>
+        </member>
+        <member name="P:VectorLibrary.Vector3D.K">
+            <summary>
+            Get the k component of the vector.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.#ctor(System.Decimal,System.Decimal,System.Decimal)">
+            <summary>
+            Initializes Vector3D instance.
+            </summary>
+            <param name="i">i-component of the vector</param>
+            <param name="j">j-component of the vector</param>
+            <param name="k">k-component of the vector</param>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.GetUnitVector">
+            <summary>
+            Calculate the unit vector along this vector.
+            </summary>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <returns>Unit vector as Vector3D.</returns>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.ToVectorND">
+            <summary>
+            Convert this vector to VectorND.
+            </summary>
+            <returns>Vector as VectorND</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.PrintF(System.Int32)">
+            <summary>
+            Format this vector as cartesian positional vector notation with i, j, k unit vectors.
+            </summary>
+            <param name="precision">Decimal precision of the vector components.</param>
+            <returns>Positional vector form as string.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.AddTo(VectorLibrary.IVector)">
+            <summary>
+            Addition of this vector with provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be pereformed the addition.</param>
+            <returns>Addition of the vectors as IVector. This can be explicitly convertible to Vector3D type.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.SubtractFrom(VectorLibrary.IVector)">
+            <summary>
+            Subtraction of this vector from provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be substracted from.</param>
+            <returns>Substraction of the vectors as IVector. This can be explicitly convertible to Vector3D type.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.MultiplyByScalar(System.Decimal)">
+            <summary>
+            Perform scalar multiplication with this vector.
+            </summary>
+            <param name="scalar">The scalar to be performed the multiplication.</param>
+            <returns>Scaled vector as IVector. This can be explicitly convertible to Vector3D type.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.VectorProjectionOn(VectorLibrary.IVector)">
+            <summary>
+            Vector projection of this vector on to provided IVector.
+            </summary>
+            <param name="vector">The vector to be projected on to.</param>
+            <returns>Vector projection of the vector as IVector. This can be explicitly convertible to Vector3D type.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.CrossProduct(VectorLibrary.IVector)">
+            <summary>
+            Perform the vector product with this vector and provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be performed the vector product.</param>
+            <returns>Vector product of the vectors as Vector3D.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided IVector is not a 3-dimensional vector.</exception>
+        </member>
+        <member name="T:VectorLibrary.VectorND">
+            <summary>
+            Defines n-dimensional vector with properties and common vector operations.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.VectorND.#ctor(System.Decimal[])">
+            <summary>
+            Initializes VectorND instance.
+            </summary>
+            <param name="vector">Vector as decimal array or set of vector components.</param>
+        </member>
+        <member name="M:VectorLibrary.VectorND.GetUnitVector">
+            <summary>
+            Calculate the unit vector along this vector.
+            </summary>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <returns>Unit vector as Vector3D. This can be explicitly convertible to VectorND type.</returns>
+        </member>
+        <member name="M:VectorLibrary.VectorND.ToVector3D">
+            <summary>
+            Convert this vector to Vector3D.
+            </summary>
+            <returns>Vector as Vector3D</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:System.InvalidCastException">Throws when the vector dimensional space is not for 3D.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorND.AddTo(VectorLibrary.IVector)">
+            <summary>
+            Addition of this vector with provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be pereformed the addition.</param>
+            <returns>Addition of the vectors as IVector. This can be explicitly convertible to VectorND type.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorND.SubtractFrom(VectorLibrary.IVector)">
+            <summary>
+            Subtraction of this vector from provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be substracted from.</param>
+            <returns>Substraction of the vectors as IVector. This can be explicitly convertible to VectorND type.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorND.MultiplyByScalar(System.Decimal)">
+            <summary>
+            Perform scalar multiplication with this vector.
+            </summary>
+            <param name="scalar">The scalar to be performed the multiplication.</param>
+            <returns>Scaled vector as IVector. This can be explicitly convertible to VectorND type.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorND.VectorProjectionOn(VectorLibrary.IVector)">
+            <summary>
+            Vector projection of this vector on to provided IVector.
+            </summary>
+            <param name="vector">The vector to be projected on to.</param>
+            <returns>Vector projection of the vector as IVector. This can be explicitly convertible to VectorND type.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="T:VectorLibrary.VectorOperations.I3DVectorOperations">
+            <summary>
+            Provides arithmetic operations only on 3-dimensional vectors.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.I3DVectorOperations.CrossProduct(VectorLibrary.IVector)">
+            <summary>
+            Perform the vector product with this vector and provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be performed the vector product.</param>
+            <returns>Vector product of the vectors as Vector3D.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided IVector is not a 3-dimensional vector.</exception>
+        </member>
+        <member name="T:VectorLibrary.VectorOperations.ICommonVectorOperations">
+            <summary>
+            Provides common arithmetic operations on vectors in any dimension.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.AddTo(VectorLibrary.IVector)">
+            <summary>
+            Addition of this vector with provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be pereformed the addition.</param>
+            <returns>Addition of the vectors as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.SubtractFrom(VectorLibrary.IVector)">
+            <summary>
+            Subtraction of this vector from provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be substracted from.</param>
+            <returns>Substraction of the vectors as IVector</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.DotProduct(VectorLibrary.IVector)">
+            <summary>
+            Perform the scalar product with this vector and provided IVector.
+            </summary>
+            <param name="vector">The IVector object to be performed the scalar product.</param>
+            <returns>Scalar product of the vectors as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.MultiplyByScalar(System.Decimal)">
+            <summary>
+            Perform scalar multiplication with this vector.
+            </summary>
+            <param name="scalar">The scalar to be performed the multiplication.</param>
+            <returns>Scaled vector as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.AngleWith(VectorLibrary.IVector,VectorLibrary.VectorEnums.AngleUnit)">
+            <summary>
+            Compute the angle between this vector and provided IVector.
+            </summary>
+            <param name="vector">The vector to be calculated the angle with.</param>
+            <param name="angleUnit">Unit of the angle [Radian/Degree].</param>
+            <returns>The angle between the vectors as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.ScalarProjectionOn(VectorLibrary.IVector)">
+            <summary>
+            Scalar projection of this vector on to provided IVector.
+            </summary>
+            <param name="vector">The vector to be projected on to.</param>
+            <returns>Scalar projection of the vector as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.VectorProjectionOn(VectorLibrary.IVector)">
+            <summary>
+            Vector projection of this vector on to provided IVector.
+            </summary>
+            <param name="vector">The vector to be projected on to.</param>
+            <returns>Vector projection of the vector as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+    </members>
+</doc>
