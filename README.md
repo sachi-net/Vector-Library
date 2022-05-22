@@ -1,6 +1,10 @@
 # Vector-Library
 Vector-Library consists of vector properties and common vector algebraic functions to perform various arithmetic operations on any dimensional vectors and scalars. This is a reusable library that any .NET 5.0 or above projects can utilize as an application dependency.
 
+## Vector-Master Demo
+Try vector-master demo application built on top of this library at,  
+[vector-master.azurewebsites.net](https://vector-master.azurewebsites.net/).
+
 ## Prerequisites
 Currently, Vector-Library dependency is available for local installation only.  
 Vector-Library requires [.NET 5.0](https://dotnet.microsoft.com/en-us/download/dotnet/5.0) (v5.#.#) or [.NET 6.0](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) (v6.#.#).

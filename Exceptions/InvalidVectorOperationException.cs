@@ -3,7 +3,7 @@
 namespace VectorLibrary.Exceptions
 {
     /// <summary>
-    /// Exception when the vector is unable to perform the iven operation.
+    /// Exception when the vector is unable to perform the given operation.
     /// </summary>
     public class InvalidVectorOperationException : Exception
     {

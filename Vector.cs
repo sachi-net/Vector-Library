@@ -12,6 +12,9 @@ namespace VectorLibrary
     /// </summary>
     public abstract class Vector : IVector
     {
+        /// <summary>
+        /// Inner vector array
+        /// </summary>
         protected decimal[] _vector;
 
         /// <summary>
