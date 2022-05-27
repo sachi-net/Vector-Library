@@ -103,7 +103,7 @@ Vector3D u = new(2, 3, -1);
 ```
 
 Initialize New n-dimensional Vector  
-Define new 3-dimensional vector `u = [1, 3, -5, 6, -2]`
+Define new n-dimensional vector `u = [1, 3, -5, 6, -2]`
 ```C#
 VectorND u = new(new decimal[] { 1, 3, -5, 6, -2 });
 ```
