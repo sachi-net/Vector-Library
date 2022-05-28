@@ -67,23 +67,32 @@ For `VectorND`
 |`VectorND(params decimal[] vector)`|Initializes VectorND instance|
 
 ### Enums
-Vector library has an enum `AngleUnit` which has two options.
+`AngleUnit` enumeration defines the unit of angle when calculating the angle between two vectors.
 |Option|Description|
 |---|---|
-|`AngleUnit.Degree`|Calculate angle in the unit of degree|
-|`AngleUnit.Radian`|Calculate angle in the unit of Radian|
+|`Degree`|Unit of angle with Radians (θ rad)|
+|`Radian`|Unit of angle with Degrees (θ°)|
+
+`DivisionMode` enumeration defines the ratio division method to follow when performing vector division.
+|Option|Description|
+|---|---|
+|`Internal`|Internal ratio division|
+|`External`|External ratio division|
 
 ### Methods
 |Name|Return Type|Availability|Description|
 |---|---|---|---|
 |`AddTo(IVector)`|`IVector`|`Vector3D` and `VectorND`|Addition of this vector with provided IVector|
-|`AngleWith(IVector, AngleUnit)`|`IVector`|`Vector3D` and `VectorND`|Compute the angle between this vector and provided IVector|
+|`AngleWith(IVector, [AngleUnit])`|`IVector`|`Vector3D` and `VectorND`|Compute the angle between this vector and provided IVector|
 |`CrossProduct(IVector)`|`Vector3D`|`Vector3D` only|Perform the vector product with this vector and provided IVector|
+|`DistanceWith(IVector)`|`IVector`|`Vector3D` only|Calculate the Euclidean distance between this vector and provided vector|
+|`DivideInto(decimal, [DivisionMode])`|`IVector`|`Vector3D` and `VectorND`|Divide this vector into the given ratio internally or externally|
 |`DotProduct(IVector)`|`decimal`|`Vector3D` and `VectorND`|Perform the scalar product with this vector and provided IVector|
 |`GetDimension()`|`int`|`Vector3D` and `VectorND`|Calculate the vector dimension|
 |`GetMagnitude()`|`decimal`|`Vector3D` and `VectorND`|Calculate the magnitude of this vector|
 |`GetUnitVector()`|`IVector`|`Vector3D` and `VectorND`|Calculate the unit vector along this vector|
 |`MultiplyByScalar(decimal)`|`IVector`|`Vector3D` and `VectorND`|Perform scalar multiplication with this vector|
+|`Negate()`|`IVector`|`Vector3D` and `VectorND`|Negate this vector|
 |`Print([int])`|`string`|`Vector3D` and `VectorND`|Format this vector as row matrix notation|
 |`PrintF([int])`|`string`|`Vector3D` only|Format this vector as cartesian positional vector notation with i, j, k unit vectors|
 |`ScalarProjectionOn(IVector)`|`decimal`|`Vector3D` and `VectorND`|Scalar projection of this vector on to provided IVector|
@@ -147,6 +156,27 @@ Convert a 3-dimensional vector `v` to an n-dimensional vector `u`. However, the 
 Vector3D v = u.ToVectorND();
 ```
 
+### Negate Vector
+Negating results the negative vector of current vector `u` and `v` as follows. 
+```C#
+Vector3D u = new(1, -3, 2);
+IVector negativeOfU = u.Negate();
+
+VectorND v = new(-2, 1, 4, -3);
+IVector negativeOfV = v.Negate();
+```
+
+### Distance between Vectors
+The Euclidean distance of two vectors `u` to `v` and `u` to `w` can be calculated as follows. The function throws `VectorNotInitializedException` if vector `u`, `v` or `w` is `null` and throws `InvalidVectorOperationException` when provided any non 3-dimensional vector.
+```C#
+Vector3D u = new(1, 5, 3);
+IVector v = new Vector3D(2, -3, 4);
+IVector w = new VectorND(4, 1, -7);
+
+decimal distanceFromUtoV = u.DistanceWith(v);
+decimal distanceFromUtoW = u.DistanceWith(w);
+```
+
 ## Vector Operations
 IVector object can perform following operations.
 
@@ -166,6 +196,22 @@ IVector result = u.SubtractFrom(v);
 Multiply vector `u` by scalar value `k`. The function throws `VectorNotInitializedException` if vector `u` is `null`.
 ```C#
 IVector result = u.MultiplyByScalar(k);
+```
+
+### Ratio Division
+A vector can be divided into a given ratio `r` internally or externally. Note that the ratio will be taken as `r:1` while performing this action. The function throws `VectorNotInitializedException` if vector current is `null`, throws `InvalidVectorOperationException` if the ratio is negative and throws `ZeroExternalDivisionException` if attempt to perform 1:1 external division.
+```C#
+IVector u = new Vector3D(1, 5, -2);
+// Divide u into 3:1 ratio internally
+IVector result1 = u.DivideInto(3, DivisionMode.Internal);
+// Divide u into 3:4 ratio externally
+IVector result2 = u.DivideInto(0.75, DivisionMode.External);
+
+IVector v = new VectorND(2, -3, -1, 5);
+// Divide v into 1:1 ratio internally (exactly into two halves)
+IVector result3 = v.DivideInto(1, DivisionMode.Internal);
+// Divide v into 5:2 ratio externally
+IVector result4 = v.DivideInto(2.5, DivisionMode.External);
 ```
 
 ### Dot Product (Scalar Product)
