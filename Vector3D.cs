@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System;
+using System.Linq;
+using System.Text;
 using VectorLibrary.Exceptions;
 using VectorLibrary.MessageTemplates;
 using VectorLibrary.VectorOperations;
@@ -45,7 +47,7 @@ namespace VectorLibrary
         /// <summary>
         /// Calculate the unit vector along this vector.
         /// </summary>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         /// <returns>Unit vector as Vector3D.</returns>
         public override Vector3D GetUnitVector()
         {
@@ -69,7 +71,7 @@ namespace VectorLibrary
         /// Convert this vector to VectorND.
         /// </summary>
         /// <returns>Vector as VectorND</returns>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         public VectorND ToVectorND()
         {
             if (_vector is null)
@@ -85,7 +87,7 @@ namespace VectorLibrary
         /// </summary>
         /// <param name="precision">Decimal precision of the vector components.</param>
         /// <returns>Positional vector form as string.</returns>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         public string PrintF(int precision = 2)
         {
             if (_vector is null)
@@ -187,7 +189,7 @@ namespace VectorLibrary
         /// </summary>
         /// <param name="scalar">The scalar to be performed the multiplication.</param>
         /// <returns>Scaled vector as IVector. This can be explicitly convertible to Vector3D type.</returns>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         public override IVector MultiplyByScalar(decimal scalar)
         {
             if (_vector is null)
@@ -260,6 +262,95 @@ namespace VectorLibrary
             decimal k = (I * v.J) - (J * v.I);
 
             return new Vector3D(i, j, k);
+        }
+
+        /// <summary>
+        /// Negate this vector.
+        /// </summary>
+        /// <returns>Negative vector of this vector as IVector.</returns>
+        /// <exception cref="VectorNotInitializedException">Throws when this vectors is not initialized.</exception>
+        public override IVector Negate()
+        {
+            if (_vector is null)
+            {
+                throw new VectorNotInitializedException(Message.VECTOR_NOT_INITIALIZED);
+            }
+
+            if (_vector.Length != 3)
+            {
+                throw new VectorSpaceNotMatchException(Message.VECTOR_SPACE_NOT_MATCH);
+            }
+
+            var comps = _vector.ToArray().Select(x => -1 * x).ToArray();
+            return new Vector3D(comps[0], comps[1], comps[2]);
+        }
+
+        /// <summary>
+        /// Calculate the Euclidean distance between this vector and provided vector.
+        /// </summary>
+        /// <param name="vector">The vector to calculate the distance from.</param>
+        /// <returns>The distance between the vectors as decimal.</returns>
+        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="InvalidVectorOperationException">Throws when provided IVector is not a 3-dimensional vector.</exception>
+        public decimal DistanceWith(IVector vector)
+        {
+            if (_vector is null || vector is null)
+            {
+                throw new VectorNotInitializedException(Message.VECTOR_NOT_INITIALIZED);
+            }
+
+            if (vector.ToArray().Length != 3)
+            {
+                throw new InvalidVectorOperationException(Message.OPERATION_NOT_DEFINED_FOR_ND);
+            }
+
+            var comps = vector.ToArray();
+            Vector3D v = vector.GetType() == typeof(Vector3D) ? vector as Vector3D :
+                new Vector3D(comps[0], comps[1], comps[2]);
+
+            decimal dx = I - v.I;
+            decimal dy = J - v.J;
+            decimal dz = K - v.K;
+
+            double rs = Math.Pow((double)dx, 2) + Math.Pow((double)dy, 2) + Math.Pow((double)dz, 2);
+            return (decimal)Math.Sqrt(rs);
+        }
+
+        /// <summary>
+        /// Divide this vector into the given ratio internally or externally.
+        /// </summary>
+        /// <param name="ratio">The ratio to which this vector is divided into.</param>
+        /// <param name="divisionMode">Division is internal or exteral.</param>
+        /// <returns>The resultant vector after the ratio division as IVector.</returns>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
+        /// <exception cref="InvalidVectorOperationException">Throws when provided when the ratio is negative.</exception>
+        /// <exception cref="ZeroExternalDivisionException">Throws when try to perform 1:1 division in external division mode.</exception>
+        public override IVector DivideInto(decimal ratio, DivisionMode divisionMode = DivisionMode.Internal)
+        {
+            if (_vector is null)
+            {
+                throw new VectorNotInitializedException(Message.VECTOR_NOT_INITIALIZED);
+            }
+
+            if (ratio < 0)
+            {
+                throw new InvalidVectorOperationException(Message.INVALID_DIVISION_RATIO);
+            }
+
+            Vector3D zeroVector = new(0, 0, 0);
+            IVector result = null;
+
+            if (divisionMode is DivisionMode.Internal)
+                result = zeroVector.AddTo(MultiplyByScalar(ratio)).MultiplyByScalar(1 / (ratio + 1));
+
+            if (divisionMode is DivisionMode.External)
+            {
+                if (ratio is 1)
+                    throw new ZeroExternalDivisionException(Message.ZERO_EXTERNAL_DIVISION);
+                result = MultiplyByScalar(ratio).SubtractFrom(zeroVector).MultiplyByScalar(1 / (1 - ratio));
+            }
+
+            return result;
         }
     }
 }

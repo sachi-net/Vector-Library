@@ -40,7 +40,7 @@ namespace VectorLibrary.VectorOperations
         /// </summary>
         /// <param name="scalar">The scalar to be performed the multiplication.</param>
         /// <returns>Scaled vector as IVector.</returns>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         public IVector MultiplyByScalar(decimal scalar);
 
         /// <summary>
@@ -70,5 +70,23 @@ namespace VectorLibrary.VectorOperations
         /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
         /// <exception cref="VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
         public IVector VectorProjectionOn(IVector vector);
+
+        /// <summary>
+        /// Negate this vector.
+        /// </summary>
+        /// <returns>Negative vector of this vector as IVector.</returns>
+        /// <exception cref="VectorNotInitializedException">Throws when this vectors is not initialized.</exception>
+        public IVector Negate();
+
+        /// <summary>
+        /// Divide this vector into the given ratio internally or externally.
+        /// </summary>
+        /// <param name="ratio">The ratio to which this vector is divided into.</param>
+        /// <param name="divisionMode">Division is internal or exteral.</param>
+        /// <returns>The resultant vector after the ratio division as IVector.</returns>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
+        /// <exception cref="InvalidVectorOperationException">Throws when provided when the ratio is negative.</exception>
+        /// <exception cref="ZeroExternalDivisionException">Throws when try to perform 1:1 division in external division mode.</exception>
+        public IVector DivideInto(decimal ratio, DivisionMode divisionMode = DivisionMode.Internal);
     }
 }

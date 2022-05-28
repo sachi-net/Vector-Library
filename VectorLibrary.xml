@@ -6,7 +6,7 @@
     <members>
         <member name="T:VectorLibrary.Exceptions.InvalidVectorOperationException">
             <summary>
-            Exception when the vector is unable to perform the iven operation.
+            Exception when the vector is unable to perform the given operation.
             </summary>
         </member>
         <member name="M:VectorLibrary.Exceptions.InvalidVectorOperationException.#ctor">
@@ -73,6 +73,29 @@
             <param name="message">The error message that explains the reason for this exception.</param>
             <param name="inner">The exception that is the cause of the current exception, or a null reference.</param>
         </member>
+        <member name="T:VectorLibrary.Exceptions.ZeroExternalDivisionException">
+            <summary>
+            Exception when attempt to divide vector by 1:1 external division.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.ZeroExternalDivisionException.#ctor">
+            <summary>
+            Initialize an instance of ZeroExternalDivisionException.
+            </summary>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.ZeroExternalDivisionException.#ctor(System.String)">
+            <summary>
+            Initialize an instance of ZeroExternalDivisionException with specified message.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+        </member>
+        <member name="M:VectorLibrary.Exceptions.ZeroExternalDivisionException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initialize an instance of ZeroExternalDivisionException with specified message and exception that cause this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for this exception.</param>
+            <param name="inner">The exception that is the cause of the current exception, or a null reference.</param>
+        </member>
         <member name="T:VectorLibrary.IVector">
             <summary>
             Define common properties and functions on vectors in any dimension.
@@ -83,20 +106,20 @@
             Calculate the magnitude of this vector.
             </summary>
             <returns>Magnitude of the vector as decimal.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.IVector.GetDimension">
             <summary>
             Calculate the vector dimension.
             </summary>
             <returns>Dimension of the vector as integer.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.IVector.GetUnitVector">
             <summary>
             Calculate the unit vector along this vector.
             </summary>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
             <returns>Unit vector as IVector</returns>
         </member>
         <member name="M:VectorLibrary.IVector.Print(System.Int32)">
@@ -105,18 +128,23 @@
             </summary>
             <param name="precision">Decimal precision of the vector components.</param>
             <returns>Row matrix form of the vector as string.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.IVector.ToArray">
             <summary>
             Convert this vector to an array.
             </summary>
             <returns>Vector components as decimal array.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="T:VectorLibrary.Vector">
             <summary>
             Defines vector with properties and common vector operations.
+            </summary>
+        </member>
+        <member name="F:VectorLibrary.Vector._vector">
+            <summary>
+            Inner vector array
             </summary>
         </member>
         <member name="M:VectorLibrary.Vector.ToArray">
@@ -124,27 +152,27 @@
             Convert this vector to an array.
             </summary>
             <returns>Vector components as decimal array.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.Vector.GetMagnitude">
             <summary>
             Calculate the magnitude of this vector.
             </summary>
             <returns>Magnitude of the vector as decimal.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.Vector.GetDimension">
             <summary>
             Calculate the vector dimension.
             </summary>
             <returns>Dimension of the vector as integer.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.Vector.GetUnitVector">
             <summary>
             Calculate the unit vector along this vector.
             </summary>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
             <returns>Unit vector as IVector</returns>
         </member>
         <member name="M:VectorLibrary.Vector.Print(System.Int32)">
@@ -153,7 +181,7 @@
             </summary>
             <param name="precision">Decimal precision of the vector components.</param>
             <returns>Row matrix form of the vector as string.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.Vector.AddTo(VectorLibrary.IVector)">
             <summary>
@@ -188,7 +216,7 @@
             </summary>
             <param name="scalar">The scalar to be performed the multiplication.</param>
             <returns>Scaled vector as IVector.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.Vector.AngleWith(VectorLibrary.IVector,VectorLibrary.VectorEnums.AngleUnit)">
             <summary>
@@ -217,6 +245,24 @@
             <returns>Vector projection of the vector as IVector.</returns>
             <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
             <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.Negate">
+            <summary>
+            Negate this vector.
+            </summary>
+            <returns>Negative vector of this vector as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vectors is not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector.DivideInto(System.Decimal,DivisionMode)">
+            <summary>
+            Divide this vector into the given ratio internally or externally.
+            </summary>
+            <param name="ratio">The ratio to which this vector is divided into.</param>
+            <param name="divisionMode">Division is internal or exteral.</param>
+            <returns>The resultant vector after the ratio division as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided when the ratio is negative.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.ZeroExternalDivisionException">Throws when try to perform 1:1 division in external division mode.</exception>
         </member>
         <member name="T:VectorLibrary.Vector3D">
             <summary>
@@ -250,7 +296,7 @@
             <summary>
             Calculate the unit vector along this vector.
             </summary>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
             <returns>Unit vector as Vector3D.</returns>
         </member>
         <member name="M:VectorLibrary.Vector3D.ToVectorND">
@@ -258,7 +304,7 @@
             Convert this vector to VectorND.
             </summary>
             <returns>Vector as VectorND</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.Vector3D.PrintF(System.Int32)">
             <summary>
@@ -266,7 +312,7 @@
             </summary>
             <param name="precision">Decimal precision of the vector components.</param>
             <returns>Positional vector form as string.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.Vector3D.AddTo(VectorLibrary.IVector)">
             <summary>
@@ -292,7 +338,7 @@
             </summary>
             <param name="scalar">The scalar to be performed the multiplication.</param>
             <returns>Scaled vector as IVector. This can be explicitly convertible to Vector3D type.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.Vector3D.VectorProjectionOn(VectorLibrary.IVector)">
             <summary>
@@ -313,6 +359,48 @@
             <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
             <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided IVector is not a 3-dimensional vector.</exception>
         </member>
+        <member name="M:VectorLibrary.Vector3D.Negate">
+            <summary>
+            Negate this vector.
+            </summary>
+            <returns>Negative vector of this vector as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vectors is not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.DistanceWith(VectorLibrary.IVector)">
+            <summary>
+            Calculate the Euclidean distance between this vector and provided vector.
+            </summary>
+            <param name="vector">The vector to calculate the distance from.</param>
+            <returns>The distance between the vectors as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided IVector is not a 3-dimensional vector.</exception>
+        </member>
+        <member name="M:VectorLibrary.Vector3D.DivideInto(System.Decimal,DivisionMode)">
+            <summary>
+            Divide this vector into the given ratio internally or externally.
+            </summary>
+            <param name="ratio">The ratio to which this vector is divided into.</param>
+            <param name="divisionMode">Division is internal or exteral.</param>
+            <returns>The resultant vector after the ratio division as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided when the ratio is negative.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.ZeroExternalDivisionException">Throws when try to perform 1:1 division in external division mode.</exception>
+        </member>
+        <member name="T:VectorLibrary.VectorEnums.AngleUnit">
+            <summary>
+            Unit of angle when calculating the angle between two vectors.
+            </summary>
+        </member>
+        <member name="F:VectorLibrary.VectorEnums.AngleUnit.Radian">
+            <summary>
+            Unit of angle with Radians (θ rad).
+            </summary>
+        </member>
+        <member name="F:VectorLibrary.VectorEnums.AngleUnit.Degree">
+            <summary>
+            Unit of angle with Degrees (θ°).
+            </summary>
+        </member>
         <member name="T:VectorLibrary.VectorND">
             <summary>
             Defines n-dimensional vector with properties and common vector operations.
@@ -328,7 +416,7 @@
             <summary>
             Calculate the unit vector along this vector.
             </summary>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
             <returns>Unit vector as Vector3D. This can be explicitly convertible to VectorND type.</returns>
         </member>
         <member name="M:VectorLibrary.VectorND.ToVector3D">
@@ -336,7 +424,7 @@
             Convert this vector to Vector3D.
             </summary>
             <returns>Vector as Vector3D</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
             <exception cref="T:System.InvalidCastException">Throws when the vector dimensional space is not for 3D.</exception>
         </member>
         <member name="M:VectorLibrary.VectorND.AddTo(VectorLibrary.IVector)">
@@ -363,7 +451,7 @@
             </summary>
             <param name="scalar">The scalar to be performed the multiplication.</param>
             <returns>Scaled vector as IVector. This can be explicitly convertible to VectorND type.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.VectorND.VectorProjectionOn(VectorLibrary.IVector)">
             <summary>
@@ -373,6 +461,24 @@
             <returns>Vector projection of the vector as IVector. This can be explicitly convertible to VectorND type.</returns>
             <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
             <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorND.Negate">
+            <summary>
+            Negate this vector.
+            </summary>
+            <returns>Negative vector of this vector as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vectors is not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorND.DivideInto(System.Decimal,DivisionMode)">
+            <summary>
+            Divide this vector into the given ratio internally or externally.
+            </summary>
+            <param name="ratio">The ratio to which this vector is divided into.</param>
+            <param name="divisionMode">Division is internal or exteral.</param>
+            <returns>The resultant vector after the ratio division as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided when the ratio is negative.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.ZeroExternalDivisionException">Throws when try to perform 1:1 division in external division mode.</exception>
         </member>
         <member name="T:VectorLibrary.VectorOperations.I3DVectorOperations">
             <summary>
@@ -387,6 +493,15 @@
             <returns>Vector product of the vectors as Vector3D.</returns>
             <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
             <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided IVector is not a 3-dimensional vector.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.I3DVectorOperations.DistanceWith(VectorLibrary.IVector)">
+            <summary>
+            Calculate the Euclidean distance between this vector and provided vector.
+            </summary>
+            <param name="vector">The vector to calculate the distance from.</param>
+            <returns>The distance between the vectors as decimal.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
             <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided IVector is not a 3-dimensional vector.</exception>
         </member>
         <member name="T:VectorLibrary.VectorOperations.ICommonVectorOperations">
@@ -427,7 +542,7 @@
             </summary>
             <param name="scalar">The scalar to be performed the multiplication.</param>
             <returns>Scaled vector as IVector.</returns>
-            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         </member>
         <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.AngleWith(VectorLibrary.IVector,VectorLibrary.VectorEnums.AngleUnit)">
             <summary>
@@ -456,6 +571,39 @@
             <returns>Vector projection of the vector as IVector.</returns>
             <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
             <exception cref="T:VectorLibrary.Exceptions.VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.Negate">
+            <summary>
+            Negate this vector.
+            </summary>
+            <returns>Negative vector of this vector as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vectors is not initialized.</exception>
+        </member>
+        <member name="M:VectorLibrary.VectorOperations.ICommonVectorOperations.DivideInto(System.Decimal,DivisionMode)">
+            <summary>
+            Divide this vector into the given ratio internally or externally.
+            </summary>
+            <param name="ratio">The ratio to which this vector is divided into.</param>
+            <param name="divisionMode">Division is internal or exteral.</param>
+            <returns>The resultant vector after the ratio division as IVector.</returns>
+            <exception cref="T:VectorLibrary.Exceptions.VectorNotInitializedException">Throws when this vector is not initialized.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.InvalidVectorOperationException">Throws when provided when the ratio is negative.</exception>
+            <exception cref="T:VectorLibrary.Exceptions.ZeroExternalDivisionException">Throws when try to perform 1:1 division in external division mode.</exception>
+        </member>
+        <member name="T:DivisionMode">
+            <summary>
+            The ratio division method to follow when performing vector division.
+            </summary>
+        </member>
+        <member name="F:DivisionMode.Internal">
+            <summary>
+            Internal ratio division.
+            </summary>
+        </member>
+        <member name="F:DivisionMode.External">
+            <summary>
+            External ratio division.
+            </summary>
         </member>
     </members>
 </doc>
