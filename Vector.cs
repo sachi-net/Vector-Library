@@ -21,7 +21,7 @@ namespace VectorLibrary
         /// Convert this vector to an array.
         /// </summary>
         /// <returns>Vector components as decimal array.</returns>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         public decimal[] ToArray()
         {
             if (_vector is null)
@@ -36,7 +36,7 @@ namespace VectorLibrary
         /// Calculate the magnitude of this vector.
         /// </summary>
         /// <returns>Magnitude of the vector as decimal.</returns>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         public decimal GetMagnitude()
         {
             if (_vector is null)
@@ -56,7 +56,7 @@ namespace VectorLibrary
         /// Calculate the vector dimension.
         /// </summary>
         /// <returns>Dimension of the vector as integer.</returns>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         public int GetDimension()
         {
             if (_vector is null)
@@ -70,7 +70,7 @@ namespace VectorLibrary
         /// <summary>
         /// Calculate the unit vector along this vector.
         /// </summary>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         /// <returns>Unit vector as IVector</returns>
         public abstract IVector GetUnitVector();
 
@@ -79,7 +79,7 @@ namespace VectorLibrary
         /// </summary>
         /// <param name="precision">Decimal precision of the vector components.</param>
         /// <returns>Row matrix form of the vector as string.</returns>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         public string Print(int precision = 2)
         {
             if (_vector is null)
@@ -148,7 +148,7 @@ namespace VectorLibrary
         /// </summary>
         /// <param name="scalar">The scalar to be performed the multiplication.</param>
         /// <returns>Scaled vector as IVector.</returns>
-        /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
         public abstract IVector MultiplyByScalar(decimal scalar);
 
         /// <summary>
@@ -222,5 +222,23 @@ namespace VectorLibrary
         /// <exception cref="VectorNotInitializedException">Throws when the vectors are not initialized.</exception>
         /// <exception cref="VectorSpaceNotMatchException">Throws when the vectors have different dimentional spaces.</exception>
         public abstract IVector VectorProjectionOn(IVector vector);
+
+        /// <summary>
+        /// Negate this vector.
+        /// </summary>
+        /// <returns>Negative vector of this vector as IVector.</returns>
+        /// <exception cref="VectorNotInitializedException">Throws when this vectors is not initialized.</exception>
+        public abstract IVector Negate();
+
+        /// <summary>
+        /// Divide this vector into the given ratio internally or externally.
+        /// </summary>
+        /// <param name="ratio">The ratio to which this vector is divided into.</param>
+        /// <param name="divisionMode">Division is internal or exteral.</param>
+        /// <returns>The resultant vector after the ratio division as IVector.</returns>
+        /// <exception cref="VectorNotInitializedException">Throws when this vector is not initialized.</exception>
+        /// <exception cref="InvalidVectorOperationException">Throws when provided when the ratio is negative.</exception>
+        /// <exception cref="ZeroExternalDivisionException">Throws when try to perform 1:1 division in external division mode.</exception>
+        public abstract IVector DivideInto(decimal ratio, DivisionMode divisionMode = DivisionMode.Internal);
     }
 }
