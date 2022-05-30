@@ -138,7 +138,7 @@ Bothe of the vector types can be converted to `decimal[]` array using `ToArray` 
 decimal[] array = u.ToArray();
 ```
 
-### Vetor Properties
+### Vector Properties
 Any vector has three main alias properties as Dimension, Magnitude and UnitVector. These properties can be calculate as follows.
 ```C#
 int dimension = u.GetDimension();
