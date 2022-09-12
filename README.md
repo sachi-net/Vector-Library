@@ -70,8 +70,8 @@ For `VectorND`
 `AngleUnit` enumeration defines the unit of angle when calculating the angle between two vectors.
 |Option|Description|
 |---|---|
-|`Degree`|Unit of angle with Radians (θ rad)|
-|`Radian`|Unit of angle with Degrees (θ°)|
+|`Degree`|Unit of angle with Radians (θ°)|
+|`Radian`|Unit of angle with Degrees (θ rad)|
 
 `DivisionMode` enumeration defines the ratio division method to follow when performing vector division.
 |Option|Description|
